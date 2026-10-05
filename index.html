@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Comunitário</title>
+</head>
+<body>
+
+    <!-- IDENTIFICAÇÃO DO SISTEMA E NAVEGAÇÃO -->
+    <header>
+        <h1>Marketplace Comunitário</h1>
+        <p>Compre e venda produtos de forma rápida e segura na sua região.</p>
+        
+        <nav>
+            <ul>
+                <li><a href="#pesquisa-filtros">Pesquisar</a></li>
+                <li><a href="#cadastro-anuncio">Criar Anúncio</a></li>
+                <li><a href="#lista-anuncios">Ver Anúncios</a></li>
+                <li><a href="#tabela-estatisticas">Estatísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PESQUISA, FILTROS E ORDENAÇÃO -->
+    <aside id="pesquisa-filtros">
+        <h2>Pesquisar e Filtrar</h2>
+        <form action="#" method="GET">
+            <!-- Pesquisa -->
+            <div>
+                <label for="termo-pesquisa">Pesquisar itens:</label>
+                <input type="search" id="termo-pesquisa" name="busca" placeholder="Ex: Bicicleta, Video game...">
+            </div>
+
+            <!-- Filtro -->
+            <div>
+                <label for="filtro-categoria">Categoria:</label>
+                <select id="filtro-categoria" name="categoria">
+                    <option value="todas">Todas as categorias</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="esporte">Esporte e Lazer</option>
+                    <option value="casa">Casa e Jardim</option>
+                    <option value="veiculos">Veículos</option>
+                </select>
+            </div>
+
+            <!-- Ordenação -->
+            <div>
+                <label for="ordenar-por">Ordenar por:</label>
+                <select id="ordenar-por" name="ordem">
+                    <option value="recentes">Mais recentes</option>
+                    <option value="preco-asc">Preço: Menor para Maior</option>
+                    <option value="preco-desc">Preço: Maior para Menor</option>
+                </select>
+            </div>
+
+            <button type="button">Aplicar Filtros</button>
+        </form>
+    </aside>
+
+    <main>
+        <!-- CADASTRO DA ENTIDADE PRINCIPAL -->
+        <section id="cadastro-anuncio">
+            <h2>Publicar um Novo Anúncio</h2>
+            <form action="#" method="POST">
+                
+                <div>
+                    <label for="titulo">Título do Produto:</label>
+                    <input type="text" id="titulo" name="titulo" required placeholder="Ex: Notebook Gamer">
+                </div>
+
+                <div>
+                    <label for="preco">Preço (R$):</label>
+                    <input type="number" id="preco" name="preco" step="0.01" min="0" required placeholder="0.00">
+                </div>
+
+                <div>
+                    <label for="categoria-produto">Categoria:</label>
+                    <select id="categoria-produto" name="categoria" required>
+                        <option value="">Selecione...</option>
+                        <option value="tecnologia">Tecnologia</option>
+                        <option value="esporte">Esporte e Lazer</option>
+                        <option value="casa">Casa e Jardim</option>
+                        <option value="veiculos">Veículos</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="estado-uso">Estado do item:</label>
+                    <select id="estado-uso" name="estado" required>
+                        <option value="novo">Novo</option>
+                        <option value="usado">Usado</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="url-imagem">Link da Imagem:</label>
+                    <input type="url" id="url-imagem" name="imagem" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+
+                <div>
+                    <label for="descricao">Descrição detalhada:</label>
+                    <textarea id="descricao" name="descricao" rows="5" required placeholder="Descreva o estado, tempo de uso, motivos da venda..."></textarea>
+                </div>
+
+                <button type="submit">Salvar Anúncio</button>
+            </form>
+        </section>
+
+        <!-- VISUALIZAÇÃO DOS ITENS CADASTRADOS -->
+        <section id="lista-anuncios">
+            <h2>Últimos Anúncios (Dados de Exemplo)</h2>
+
+            <!-- Item 1 -->
+            <article>
+                <img src="https://via.placeholder.com/150" alt="Fotografia de um Notebook">
+                <h3>Notebook Gamer 15.6"</h3>
+                <p><strong>Preço:</strong> R$ 3.500,00</p>
+                <p><strong>Categoria:</strong> Tecnologia</p>
+                <div>
+                    <button type="button">Ver Detalhes</button>
+                    <button type="button">Editar</button>
+                    <button type="button">Excluir</button>
+                </div>
+            </article>
+
+            <!-- Item 2 -->
+            <article>
+                <img src="https://via.placeholder.com/150" alt="Fotografia de uma Bicicleta">
+                <h3>Bicicleta de Montanha</h3>
+                <p><strong>Preço:</strong> R$ 850,00</p>
+                <p><strong>Categoria:</strong> Esporte e Lazer</p>
+                <div>
+                    <button type="button">Ver Detalhes</button>
+                    <button type="button">Editar</button>
+                    <button type="button">Excluir</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- VISUALIZAÇÃO DOS DETALHES DE UM ITEM -->
+        <section id="detalhes-item">
+            <h2>Detalhes do Item Selecionado</h2>
+            <article>
+                <img src="https://via.placeholder.com/300" alt="Fotografia detalhada do Notebook">
+                <h3>Notebook Gamer 15.6" - Como Novo</h3>
+                <p><strong>Preço:</strong> R$ 3.500,00</p>
+                <p><strong>Estado:</strong> Usado</p>
+                <p><strong>Publicado em:</strong> 15 de Outubro de 2026</p>
+                <p><strong>Descrição:</strong> Vendo notebook gamer em excelente estado. Tem processador i7, 16GB de RAM e placa de vídeo dedicada. Segue na caixa original com o carregador. Bateria dura cerca de 4 horas.</p>
+                <button type="button">Entrar em Contato com o Vendedor</button>
+            </article>
+        </section>
+
+        <!-- REQUISITO TÉCNICO: TABELA -->
+        <section id="tabela-estatisticas">
+            <h2>Resumo do Marketplace</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Anúncios Ativos</th>
+                        <th>Preço Médio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tecnologia</td>
+                        <td>45</td>
+                        <td>R$ 1.850,00</td>
+                    </tr>
+                    <tr>
+                        <td>Esporte e Lazer</td>
+                        <td>12</td>
+                        <td>R$ 450,00</td>
+                    </tr>
+                    <tr>
+                        <td>Veículos</td>
+                        <td>3</td>
+                        <td>R$ 45.000,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Marketplace Comunitário - Desenvolvimento de Interfaces Web</p>
+        <ul>
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Termos e Condições</a></li>
+            <li><a href="#">Privacidade</a></li>
+        </ul>
+    </footer>
+
+</body>
+</html>
