@@ -1,0 +1,330 @@
+/* ==========================================================================
+   Variáveis e Identidade Visual
+   ========================================================================== */
+:root {
+    --cor-primaria: #0369a1; /* Azul escuro */
+    --cor-primaria-hover: #0284c7;
+    --cor-secundaria: #e0f2fe;
+    --cor-fundo: #f8fafc;
+    --cor-texto: #334155;
+    --cor-texto-claro: #64748b;
+    --cor-borda: #cbd5e1;
+    --cor-branco: #ffffff;
+    --cor-perigo: #ef4444;
+    --cor-perigo-hover: #dc2626;
+    
+    --espacamento-p: 8px;
+    --espacamento-m: 16px;
+    --espacamento-g: 24px;
+    
+    --raio-borda: 8px;
+    --sombra-leve: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* ==========================================================================
+   Reset e Configurações Base (Tipografia, Box Model, Acessibilidade)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Requisito: Box Model */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* Acessibilidade: indicação visual clara de foco para navegação por teclado */
+:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   Layout Principal (CSS Grid)
+   ========================================================================== */
+.container-layout {
+    max-width: 1200px;
+    margin: var(--espacamento-g) auto;
+    padding: 0 var(--espacamento-m);
+    
+    /* Utilização de CSS Grid para separar menu lateral e conteúdo */
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--espacamento-g);
+    align-items: start;
+}
+
+/* ==========================================================================
+   Componentes de Interface
+   ========================================================================== */
+
+/* Cabeçalho usando Flexbox */
+.cabecalho-site {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--espacamento-m) 0;
+    box-shadow: var(--sombra-leve);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--espacamento-m);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacamento-m);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: var(--espacamento-m);
+}
+
+.nav-links a {
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+/* Estados de Interação */
+.nav-links a:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Seções (Cards Brancos) */
+.card-secao, .painel-lateral {
+    background-color: var(--cor-branco);
+    padding: var(--espacamento-g);
+    border-radius: var(--raio-borda);
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espacamento-g);
+    box-shadow: var(--sombra-leve);
+}
+
+.card-secao h2, .painel-lateral h2 {
+    margin-bottom: var(--espacamento-m);
+    padding-bottom: var(--espacamento-p);
+    border-bottom: 2px solid var(--cor-secundaria);
+    color: var(--cor-primaria);
+}
+
+/* Formulários */
+.form-vertical, .form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-m);
+}
+
+.form-grid {
+    /* Grid interno para o formulário de cadastro */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espacamento-m);
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cor-primaria);
+}
+
+/* Botões */
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primario { background-color: var(--cor-primaria); color: var(--cor-branco); }
+.btn-primario:hover { background-color: var(--cor-primaria-hover); }
+
+.btn-secundario { background-color: var(--cor-secundaria); color: var(--cor-primaria); }
+.btn-secundario:hover { background-color: #bae6fd; }
+
+.btn-perigo { background-color: var(--cor-perigo); color: var(--cor-branco); }
+.btn-perigo:hover { background-color: var(--cor-perigo-hover); }
+
+.btn-largo { width: 100%; padding: 14px; font-size: 1.1rem; }
+
+/* Listagem de Anúncios (CSS Grid + Flexbox) */
+.grid-anuncios {
+    display: grid;
+    /* Cards responsivos sem precisar de media query explícita */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--espacamento-m);
+}
+
+.card-produto {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.card-produto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.card-corpo {
+    padding: var(--espacamento-m);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Preenche o espaço restante usando flex */
+    gap: 8px;
+}
+
+.preco {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.badge {
+    align-self: flex-start;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+    padding: 4px 8px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-botoes {
+    margin-top: auto; /* Empurra os botões para o final do card */
+    display: flex;
+    gap: 8px;
+    padding-top: var(--espacamento-m);
+}
+.card-botoes button { flex: 1; font-size: 0.85rem; padding: 8px; }
+
+/* Tabela Estatísticas */
+.tabela-responsiva {
+    overflow-x: auto; /* Evita quebra de layout no mobile */
+}
+
+.tabela-dados {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-dados th, .tabela-dados td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela-dados th {
+    background-color: var(--cor-fundo);
+    font-weight: 600;
+}
+
+/* Rodapé */
+.rodape-site {
+    background-color: var(--cor-texto);
+    color: var(--cor-branco);
+    padding: var(--espacamento-g) 0;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.rodape-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-p);
+}
+
+.rodape-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: var(--espacamento-m);
+}
+.rodape-links a { color: var(--cor-borda); text-decoration: none; }
+.rodape-links a:hover { color: var(--cor-branco); }
+
+/* ==========================================================================
+   Responsividade (Media Queries)
+   ========================================================================== */
+
+/* Tablet e Mobile */
+@media (max-width: 900px) {
+    /* O Grid principal passa a ter apenas 1 coluna */
+    .container-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Move o painel de pesquisa para ficar em cima do conteúdo no mobile */
+    .painel-lateral {
+        order: -1;
+    }
+}
+
+/* Mobile Menor */
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* O grid do formulário de cadastro vira coluna única */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
